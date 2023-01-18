@@ -1,0 +1,23 @@
+.alerta {
+    padding: 10px;
+    color: white;
+    background-color: #f6c23e;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+
+  
+  .btnFechar {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .btnFechar:hover {
+    color: black;
+  }
