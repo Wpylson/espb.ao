@@ -41,14 +41,21 @@ class User extends Conexao
             $rows = $result->fetch_assoc();
             $email = $rows['user_email'];
             $user_level = $rows['user_level'];
+            $user_id=$rows['idUser'];
             if ($user_level == 1) {
-                header("Location: /admin/dashboard.php");
+                header("Location: admin/dashboard.php");
                 $validade = strtotime("+1 month");
                 setcookie("espbadm", $email, $validade, "/", "", false, true);
+                $_SESSION['useremail']=$email;
+                $_SESSION['user_level']=$user_level;
+                $_SESSION['user_id']=$user_id; 
             } elseif ($user_level == 2) {
                 header("Location: dashboard.php");
                 $validade = strtotime("+1 month");
                 setcookie("espbuser", $email, $validade, "/", "", false, true);
+                $_SESSION['useremail']=$email;
+                $_SESSION['user_level']=$user_level;
+                $_SESSION['user_id']=$user_id;                
             }
         } else {
             header("Location: login.php?msgl=error");
@@ -59,16 +66,18 @@ class User extends Conexao
     {
         $validade = time()-3600;
         $result=setcookie("espbuser", '', $validade, "/", "", false, true);
+        session_destroy();
         if($result=TRUE){
             header("Location: login.php"); 
         }
     }
-    public function logoutAdm()
+    public function logoutAdmin()
     {
         $validade = time()-3600;
         $result=setcookie("espbadm", '', $validade, "/", "", false, true);
+        session_destroy();
         if($result=TRUE){
-            header("Location: login.php"); 
+            header("Location: ../login.php"); 
         }
     }
 
@@ -84,13 +93,28 @@ class User extends Conexao
         }
         
     }
+    public function getUserById($idUser){
+        $query = "SELECT * FROM tbl_users WHERE idUsers='$idUser'";
+        $result= $this->conexao->query($query);
+        if($result->num_rows > 0){
+            $row = $result->fetch_assoc();
+            return $row;
+        }
+        else{
+            echo"Utilizador nao econtrado";
+        }
+        
+    }
 
     public function getAllUsersByLevel($level){
         $query = "SELECT * FROM tbl_users WHERE user_level='$level'";
         $result= $this->conexao->query($query);
         if($result->num_rows > 0){
-            $rows = $result->fetch_assoc();
-            return $rows;
+            $datas = array();
+            while($rows= $result->fetch_assoc()){
+                $datas[]=$rows;
+            }
+            return $datas;
         }
         else{
             echo"Utilizadores não econtrados";

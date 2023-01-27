@@ -6,10 +6,18 @@
     border-radius: 10px;
   }
 
+  .alert {
+    padding: 10px;
+    color: #858796;
+    background-color: #fff;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+
   
   .btnFechar {
     margin-left: 15px;
-    color: white;
+    color: #858796;
     font-weight: bold;
     float: right;
     font-size: 22px;

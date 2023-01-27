@@ -75,7 +75,7 @@ if(isset($_POST['submit'])){
                 <div class="alerta ">
                 <span class="icon text-white-50">
                       <i class="fas fa-exclamation-triangle"></i>
-                    </span>
+                    </span> 
                   <span class="btnFechar" onclick="this.parentElement.style.display='none';">&times;</span>
                   <strong>Palavra-passes</strong> diferentes, por favor tente novamente.
                 </div>
@@ -101,6 +101,9 @@ if(isset($_POST['submit'])){
               <div class="text-center">
                 <a class="small" href="login.php">Já tens uma conta? Entar!</a>
               </div>
+              <div class="text-center">
+                    <a href="http://www.espb.edu.ao">www.espb.edu.ao</a>
+                  </div>
             </div>
           </div>
         </div>
