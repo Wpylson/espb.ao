@@ -5,7 +5,7 @@ class Conexao
     private $_localhost = 'localhost';
     private $_utilzador = 'root';
     private $_palavraPasse ='';
-    private $_nomeBD ='espb';
+    private $_nomeBD ='bd_espb';
 
     protected $conexao;
 
